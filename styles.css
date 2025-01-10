@@ -769,3 +769,9 @@ footer ul li a:hover {
       transform: scale(1);
   }
 }
+
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
