@@ -102,3 +102,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     alert('¡Mensaje enviado exitosamente!'); // Mostrar mensaje de confirmación
 });
 
+document.querySelectorAll(".product-next__btn").forEach((element) => {
+  element.addEventListener("click", () => alert("Próximamente, seguimos trabajando en nuestros productos"));
+});
