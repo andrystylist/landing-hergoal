@@ -8,11 +8,16 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
         integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Slab" rel="stylesheet" />
 
     <link rel="stylesheet" href="styles.css" />
 
     <title>HerGoal</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
 </head>
 
@@ -20,22 +25,18 @@
 
     <header class="navbar">
         <div class="logo">
-            <a href="#"><img src="assets/images/logo.png" alt="logo"></a>
+            <a href="#">
+                <img src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736544419/Dise%C3%B1o_sin_t%C3%ADtulo_o3sym4.png" alt="HerGoal Logo">
+            </a>
         </div>
         <nav>
-
-            <div class="icon-bar" onclick="Show()">
-                <i></i>
-                <i></i>
-                <i></i>
-            </div>
-
-            <ul id="nav-lists">
-                <li class="close"><span onclick="Hide()">×</span></li>
-                <li><a href="#hergoal">Inicio</a></li>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
                 <li><a href="#product">Productos</a></li>
-                <li><a href="#feature">Servicios</a></li>
+                <li><a href="#servicio">Servicios</a></li>
+                <li><a href="#proximamente">Proximamente</a></li>
                 <li><a href="#about">Talentos</a></li>
+                
             </ul>
         </nav>
     </header>
@@ -53,45 +54,89 @@
                 </div>
             </article>
 
-            <article id="product" class="product anchor">
+            <article id="product" class="product anchor container">
                 <div class="title">
                     <h2>Productos más vendidos </h2>
                 </div>
-                <div class="banner">
-                    <img class="banner__image responsive" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736529980/fit-young-woman-holding-soccer-ball_o48sur.jpg">
-                    <div class="banner__text ml-5 mr-2">
-                        <h1 class="smallTitle">más vendido</h1>
-                        <h1 class="bigTitle">El Balón de Fútbol</h1>
-                        <p>Experimenta el juego como los profesionales con nuestro balón de fútbol de alta gama. Confeccionado con los materiales más innovadores, este balón ofrece un vuelo preciso, un rebote perfecto y una durabilidad excepcional.</p>
+
+
+                <div id="productosList">
+                    <div class="productoItem">
+                        <h3>Zapatilla NIKE</h3>
+                        <p>Precio: $10</p>
+                        <button id="agregarCarritoBtn1" onclick="agregarAlCarrito({name: 'Producto 1', price: 10}, 'agregarCarritoBtn1')">Añadir al carrito</button>
+                    </div>
+                    <div class="productoItem">
+                        <h3>Sudadera Adidas</h3>
+                        <p>Precio: $20</p>
+                        <button id="agregarCarritoBtn2" onclick="agregarAlCarrito({name: 'Producto 2', price: 20}, 'agregarCarritoBtn2')">Añadir al carrito</button>
+                    </div>
+                    <div class="productoItem">
+                        <h3>Balon Golty 2309</h3>
+                        <p>Precio: $30</p>
+                        <button id="agregarCarritoBtn3" onclick="agregarAlCarrito({name: 'Producto 3', price: 30}, 'agregarCarritoBtn3')">Añadir al carrito</button>
                     </div>
                 </div>
-                <div class="banner">
-                    <div class="banner__text mr-5 ml-2">
-                        <h1 class="smallTitle">más vendido</h1>
-                        <h1 class="bigTitle">Short Deportivo con Bolsillos Laterales</h1>
-                        <p>El tejido transpirable y de secado rápido te mantiene fresca y cómoda durante tus entrenamientos al aire libre.</p>
-                    </div>
-                    <img class="banner__image responsive" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736529989/freepik__expand__94856_d4nwsz.jpg">
+            
+                <div class="carritoIconoContenedor" onclick="alternarCarrito()">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="contadorArticulos">0</span>
                 </div>
-                <div class="banner">
-                    <img class="banner__image responsive" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736529980/senior-woman-sportwear-training-volleyball-gradient-background-neon-light-female-model-great-shape-stays-active-concept-sport-activity-movement-wellbeing-confidence-copyspace_cayz8s.jpg">
-                    <div class="banner__text mr-5 ml-2">
-                        <h1 class="smallTitle">más vendido</h1>
-                        <h1 class="bigTitle">Conjunto clásico de fútbol</h1>
-                        <p>La camiseta, confeccionada con un tejido técnico de secado rápido, cuenta con un diseño moderno y un corte ceñido que te ofrece una gran libertad de movimiento. Los shorts, igualmente ligeros y transpirables.</p>
+            
+                <div id="carritoDesplegable" class="carritoDesplegable">
+                    <h3>Tu Carrito</h3>
+                    <ul id="listaCarrito"></ul>
+                    <button class="botonPagar" onclick="pagar()">Pagar</button>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <div class="banner">
+                            <img class="banner__image responsive" src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736541142/football-shoes_ijcjgb.jpg">
+                            <div class="banner__text ml-5 mr-2">
+                                <h1 class="bigTitle">El Balón de Fútbol</h1>
+                                <p>Experimenta el juego como los profesionales con nuestro balón de fútbol de alta gama. Confeccionado con los materiales más innovadores, este balón ofrece un vuelo preciso, un rebote perfecto y una durabilidad excepcional.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="banner">
-                    <div class="banner__text mr-5 ml-2">
-                        <h1 class="smallTitle">más vendido</h1>
-                        <h1 class="bigTitle">Conjunto Deportivo Licrado</h1>
-                        <p>Este conjunto de dos piezas, compuesto por un top y un short, es perfecto para tus entrenamientos más intensos. El tejido de licra de alta calidad se adapta a tu cuerpo, brindándote una total libertad de movimiento</p>
+                <div class="row">
+                    <div class="col">
+                        <div class="banner">
+                            <div class="banner__text mr-5 ml-2">
+                                <h1 class="bigTitle">Short Deportivo</h1>
+                                <p>Con bolsillos laterales el tejido transpirable y de secado rápido te mantiene fresca y cómoda durante tus entrenamientos al aire libre.</p>
+                            </div>
+                            <img class="banner__image responsive" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736529989/freepik__expand__94856_d4nwsz.jpg">
+                        </div>
                     </div>
-                    <img class="banner__image responsive" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736536593/articulo_ubgmie.jpg">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="banner">
+                            <img class="banner__image responsive" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736529980/senior-woman-sportwear-training-volleyball-gradient-background-neon-light-female-model-great-shape-stays-active-concept-sport-activity-movement-wellbeing-confidence-copyspace_cayz8s.jpg">
+                            <div class="banner__text mr-5 ml-2">
+                                <h1 class="bigTitle">Conjunto clásico de fútbol</h1>
+                                <p>La camiseta, confeccionada con un tejido técnico de secado rápido, cuenta con un diseño moderno y un corte ceñido que te ofrece una gran libertad de movimiento. Los shorts, igualmente ligeros y transpirables.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="banner">
+                            <div class="banner__text mr-5 ml-2">
+                                <h1 class="bigTitle">Conjunto Deportivo Licrado</h1>
+                                <p>Este conjunto de dos piezas, compuesto por un top y un short, es perfecto para tus entrenamientos más intensos. El tejido de licra de alta calidad se adapta a tu cuerpo, brindándote una total libertad de movimiento</p>
+                            </div>
+                            <img class="banner__image responsive" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736536593/articulo_ubgmie.jpg">
+                        </div>
+                    </div>
                 </div>
             </article>
 
-            <article class="hergoal_service">
+            <article id="servicio" class="hergoal_service">
                 <div class="overlay_2">
                         <h1>
                             <span class="deskripsi">
@@ -103,10 +148,111 @@ Además, ofrecemos beneficios exclusivos para quienes deseen postularse, como op
                 </div>
             </article>
 
+            <div class="new-products-release">
+                <div class="background"></div>
+                <div>
+                    <h3 id="proximamente" class="new-products-release__title">Próximamente</h3> 
+                </div>
+                <div class="products-carousel carousel slide mb-6" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col col-lg-4">
+                                        <img src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736540811/fit-young-woman-with-soccer-ball_biyyif.jpg" alt="product" class="product-img" />
+                                        <h2 class="product-name fw-normal">Heading</h2>
+                                        <p class="product-description">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                        <p class="button-container"><button class="btn btn-secondary" href="#">View details &raquo;</button></p>
+                                    </div><!-- /.col-lg-4 -->
+                                    <div class="col col-lg-4">
+                                        <img src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736540811/fit-young-woman-with-soccer-ball_biyyif.jpg" alt="product" class="product-img" />
+                                        <h2 class="product-name fw-normal">Heading</h2>
+                                        <p class="product-description">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                        <p class="button-container"><button class="btn btn-secondary" href="#">View details &raquo;</button></p>
+                                    </div><!-- /.col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <img src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736540811/fit-young-woman-with-soccer-ball_biyyif.jpg" alt="product" class="product-img" />
+                                        <h2 class="product-name fw-normal">Heading</h2>
+                                        <p class="product-description">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                        <p class="button-container"><button class="btn btn-secondary" href="#">View details &raquo;</button></p>
+                                    </div><!-- /.col-lg-4 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <img src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736540811/fit-young-woman-with-soccer-ball_biyyif.jpg" alt="product" class="product-img" />
+                                        <h2 class="product-name fw-normal">Heading</h2>
+                                        <p class="product-description">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                        <p class="button-container"><button class="btn btn-secondary" href="#">View details &raquo;</button></p>
+                                    </div><!-- /.col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <img src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736540811/fit-young-woman-with-soccer-ball_biyyif.jpg" alt="product" class="product-img" />
+                                        <h2 class="product-name fw-normal">Heading</h2>
+                                        <p class="product-description">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                        <p class="button-container"><button class="btn btn-secondary" href="#">View details &raquo;</button></p>
+                                    </div><!-- /.col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <img src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736540811/fit-young-woman-with-soccer-ball_biyyif.jpg" alt="product" class="product-img" />
+                                        <h2 class="product-name fw-normal">Heading</h2>
+                                        <p class="product-description">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                        <p class="button-container"><button class="btn btn-secondary" href="#">View details &raquo;</button></p>
+                                    </div><!-- /.col-lg-4 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <img src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736540811/fit-young-woman-with-soccer-ball_biyyif.jpg" alt="product" class="product-img" />
+                                        <h2 class="product-name fw-normal">Heading</h2>
+                                        <p class="product-description">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                        <p class="button-container"><button class="btn btn-secondary" href="#">View details &raquo;</button></p>
+                                    </div><!-- /.col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <img src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736540811/fit-young-woman-with-soccer-ball_biyyif.jpg" alt="product" class="product-img" />
+                                        <h2 class="product-name fw-normal">Heading</h2>
+                                        <p class="product-description">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                        <p class="button-container"><button class="btn btn-secondary" href="#">View details &raquo;</button></p>
+                                    </div><!-- /.col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <img src="https://res.cloudinary.com/dq66wlb15/image/upload/v1736540811/fit-young-woman-with-soccer-ball_biyyif.jpg" alt="product" class="product-img" />
+                                        <h2 class="product-name fw-normal">Heading</h2>
+                                        <p class="product-description">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                        <p class="button-container"><button class="btn btn-secondary" href="#">View details &raquo;</button></p>
+                                    </div><!-- /.col-lg-4 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
 
-            <article id="feature" class="feature anchor">
+            <article id="beneficio"class="feature anchor">
                 <div class="title">
                     <h2>BENEFICIOS</h2>
+                    
+                <h5> En HerGoal, estamos comprometidos con el apoyo al talento colombiano femenino, y es por eso que hemos creado nuestra Escuela de Fútbol Femenino. En nuestra escuela, ofrecemos un ambiente de formación profesional con beneficios exclusivos para nuestras jugadoras, tales como entrenamientos personalizados, acceso a expertos en el área y una infraestructura de alto nivel. Además, nuestra visión está enfocada en brindarles a todas las jugadoras proyección nacional e internacional, para que puedan llevar su pasión por el fútbol a nuevas alturas. ¡Acompáñanos en este viaje y sigamos creciendo juntas! </h5>
+                
                 </div>
                 <div class="card">
                     <div class="features">
@@ -161,7 +307,7 @@ Además, ofrecemos beneficios exclusivos para quienes deseen postularse, como op
     <header>
         <h2>María Fernández</h2>
         <figure>
-            <img class="photo-profile" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736529980/fit-young-woman-holding-soccer-ball_o48sur.jpg" />
+            <img class="photo-profile" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736529257/fut5_kkn6vs.jpg" />
             <figcaption>La capitana</figcaption>
         </figure>
     </header>
@@ -197,53 +343,29 @@ Además, ofrecemos beneficios exclusivos para quienes deseen postularse, como op
 
     <footer>
         <div id="left-footer">
-            <h3>Quick Links</h3>
-            <p>
-                <ul>
-                    <li>
-                        <a href="javascript:void()">hergoal</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void()">Products</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void()">Features</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void()">About</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void()">Subcription</a>
-                    </li>
-                </ul>
-            </p>
+            <h3>HerGoal Colombia</h3>
+            <ul>
+                <li><a href="javascript:void(0);">Encuéntranos</a></li>
+                <li><a href="javascript:void(0);">Nuestra dirección: Calle 155 Bis A 8B 50</a></li>
+                <li><a href="javascript:void(0);">Teléfono: +57 3454565</a></li>
+                <li><a href="javascript:void(0);">hergoaljuridico@hergoal.com</a></li>
+            </ul>
         </div>
-
+    
         <div id="right-footer">
-            <h3>Follow me on</h3>
-            <div id="social-media-footer">
-                <ul>
-                    <li>
-                        <a target="_blank" href="https://web.facebook.com/rifky.ilmi/">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="https://www.instagram.com/y_ilmimr/">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="https://github.com/RifkiIlmi">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <p>This website is developed by MRiL</p>
+            <h3>Síguenos en</h3>
+            <ul>
+               
+                <li><a target="_blank" href="https://github.com/RifkiIlmi"><i class="fab fa-github"></i> GitHub</a></li>
+            </ul>
+            <p>Este sitio web fue desarrollado por el equipo HerGoal.</p>
         </div>
     </footer>
+   
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="script.js"></script>
 
 </body>
