@@ -34,7 +34,7 @@
                 <li class="close"><span onclick="Hide()">×</span></li>
                 <li><a href="#hergoal">Inicio</a></li>
                 <li><a href="#product">Productos</a></li>
-                <li><a href="#feature">servicios</a></li>
+                <li><a href="#feature">Servicios</a></li>
                 <li><a href="#about">Talentos</a></li>
             </ul>
         </nav>
@@ -53,7 +53,7 @@
                 </div>
             </article>
 
-            <article id="product" class="overview anchor">
+            <article id="product" class="product anchor">
                 <div class="title">
                     <h2>Productos más vendidos </h2>
                 </div>
@@ -90,6 +90,19 @@
                     <img class="banner__image responsive" src="https://res.cloudinary.com/dwnrvkjbr/image/upload/v1736536593/articulo_ubgmie.jpg">
                 </div>
             </article>
+
+            <article class="hergoal_service">
+                <div class="overlay_2">
+                        <h1>
+                            <span class="deskripsi">
+                                HerGoal es nuestro servicio dedicado a impulsar el fútbol femenino, ofreciendo no solo la venta de ropa y accesorios deportivos, sino también promoviendo activamente a las chicas para que continúen desarrollándose en este deporte. A través de HerGoal, buscamos destacar el talento, el progreso y las historias de las mujeres futbolistas, creando un espacio donde puedan ser reconocidas y apoyadas.
+
+Además, ofrecemos beneficios exclusivos para quienes deseen postularse, como oportunidades de patrocinio, participación en eventos deportivos y recursos para su crecimiento dentro del fútbol.
+                            </span>
+                        </h1>
+                </div>
+            </article>
+
 
             <article id="feature" class="feature anchor">
                 <div class="title">
@@ -129,12 +142,12 @@
 
             <article class="contact anchor" id="about">
                 <div class="title">
-                    <h2>TALENTOS</h2>
+                    <h2>POSTULATE</h2>
                 </div>
                 <div class="group">
           
                     <section class="contact-form">
-                        <form action="http://localhost:3000/send-email" method="POST">
+                        <form id="contactForm">
                             <input type="text" class="feedback-input" name="nombre" placeholder="Nombre" required />
                             <input type="email" class="feedback-input" name="correo" placeholder="Correo electrónico" required />
                             <input type="text" class="feedback-input" name="motivo" placeholder="Motivo" required />
@@ -142,7 +155,6 @@
                             <input type="submit" value="ENVIAR" />
                         </form>
                     </section>
-                    
           
                   <aside>
                     <article class="profile">
